@@ -1,0 +1,154 @@
+/* Reset e estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #fff;
+}
+
+/* Container da cena 3D */
+#scene-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: transparent;
+}
+
+/* Container das letras */
+#lyrics-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+}
+
+.lyrics-line {
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.7);
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 10px 0;
+}
+
+.lyrics-line.visible {
+    opacity: 1;
+}
+
+/* Controles de áudio */
+#audio-controls {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2;
+}
+
+#play-pause {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: block !important;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    color: white;
+    font-size: 1.8rem;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+#play-pause:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+#play-pause .pause {
+    display: none;
+}
+
+#play-pause.playing .play {
+    display: none;
+}
+
+#play-pause.playing .pause {
+    display: inline;
+}
+
+/* Loading indicator */
+#loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+.loading-text {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: white;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    max-width: 80%;
+    line-height: 1.4;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .lyrics-line {
+        font-size: 1.5rem;
+    }
+
+    #play-pause {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+}
+
+#video-container {
+    display: none; /* Oculta o container de vídeo de fundo */
+}
+
+#background-video {
+    display: none; /* Oculta o vídeo de fundo */
+} 
